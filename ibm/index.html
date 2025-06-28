@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('https://wallpapers.com/images/featured/beautiful-anime-6pxtfixyn3ku7622.jpg') no-repeat center center/cover;
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      width: 320px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .card input {
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .card button {
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #ff4dd2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .card button:hover {
+      background: #ff1ab9;
+    }
+
+    .card .options {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .card .options label {
+      color: #ffccff;
+      font-weight: bold;
+    }
+
+    .card .options a {
+      color: #ff99ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .card .options a:hover {
+      text-decoration: underline;
+    }
+
+    .card .switch {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 13px;
+      color: white;
+    }
+
+    .card .switch a {
+      color: #ffccff;
+      text-decoration: none;
+    }
+
+    .card .switch a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form class="card" onsubmit="return false">
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <div class="options">
+        <label><input type="checkbox" /> Remember me</label>
+        <a href="#" onclick="goTo('forgot')">Forgot password?</a>
+      </div>
+      <button type="submit">Login</button>
+      <p class="switch">Don't have an account? <a href="#" onclick="goTo('signup')">Register</a></p>
+    </form>
+  </div>
+  <div class="container" style="display:none" id="signup">
+    <form class="card" onsubmit="return false">
+      <h2>Sign Up</h2>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Register</button>
+      <p class="switch">Already have an account? <a href="#" onclick="goTo('login')">Login</a></p>
+    </form>
+  </div>
+  <div class="container" style="display:none" id="forgot">
+    <form class="card" onsubmit="alert('Reset link sent to your email'); return false;">
+      <h2>Forgot Password</h2>
+      <p style="color:white; font-size: 13px;">Enter your email to reset password.</p>
+      <input type="email" placeholder="Email" required />
+      <button type="submit">Send Reset Link</button>
+      <p class="switch"><a href="#" onclick="goTo('login')">Back to Login</a></p>
+    </form>
+  </div>
+  <script>
+    function goTo(page) {
+      document.querySelectorAll(".container").forEach(div => div.style.display = "none");
+      if (page === "signup") {
+        document.getElementById("signup").style.display = "flex";
+      } else if (page === "forgot") {
+        document.getElementById("forgot").style.display = "flex";
+      } else {
+        document.querySelector(".container").style.display = "flex";
+      }
+    }
+  </script>
+</body>
+</html>
